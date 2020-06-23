@@ -7,7 +7,7 @@
  * action Function to each value in the collection.
  * 
  * @param {Array or Object} collection: The collection over which to iterate.
- * @param {Function} action: The Function to be applied to each value in the 
+ * @param {Function} callback: The Function to be applied to each value in the 
  * collection
  */
 function each(collection, action) {
@@ -40,9 +40,9 @@ module.exports.identity = identity;
 
 /**
  * typeOf: takes a value and returns type of value as a string
- * @param {Any datatype} value: any data type
+ * @param {*} value: any data type
  * 
- * @return value: will return the type of value as a string 
+ * @return {string}: will return the type of value as a string 
  */
  
 function typeOf(value){
@@ -69,8 +69,8 @@ module.exports.typeOf = typeOf;
  * 
  * @return {[]}: if the number given is a negative
  * @return {first element in array}: if number is not given or not a number
- * @return {whole array}: if number given is greater than the array's length 
- * @return {modified array}: will return an array's elements up to the given number
+ * @return {array}: if number given is greater than the array's length it will return whole array
+ * @return {array}: will return an array's elements up to the given number it will return the modified array
  */
  
  function first(array, number){
@@ -87,12 +87,12 @@ module.exports.first = first();
  *      [], or last element in array
  * 
  * @param {Array} array: any array that will be tested 
- * @param {number} number: the number that will be passed to test if it is a number in the array
+ * @param {number} x: the number that will be passed to test if it is a number in the array
  * 
  * @return {[]}: if the number is a negative
  * @return {last element in array}: if the number is not given or not a number 
- * @return {whole array}: if number given is greater than the array's length
- * @return {modified array}: will return an array's elements up to the given number to the end
+ * @return {array}: if number given is greater than the array's length it will return the whole array 
+ * @return {array}: will return an array's elements up to the given number to the end it will return a modified array
  */
  
  function last(array, x){
@@ -109,9 +109,9 @@ module.exports.last = last();
  * indexOf: return the index of the first instance of a value
  * 
  * @param {Array} array: elements in an array that might have the same values set in different index
- * @param {value} valuer: Value that will be used to find its first occurance 
+ * @param {*} value: Value that will be used to find its first occurance 
  * 
- * @return {-1} : if value given is not in array
+ * @return {number} : if value given is not in array it will return -1
  * @return {number}: returns index where the value is first seen
  * 
  */
@@ -132,10 +132,9 @@ module.exports.indexOf = indexOf;
  * contains: check if the array has a certain value
  * 
  * @param {Array} array: iterate through the array and test it's values 
- * @param {value} value: any date type value
+ * @param {*} value: any date type value
  * 
- * @return {true}: if the value is within the array
- * @return {false}: if the value is not in the array
+ * @return {boolean}: if the value is within the array it will return true, if not it will return false
  * 
  */
  
@@ -174,7 +173,7 @@ module.exports.unique = unique;
  *              
  * 
  * @param {Array} array: any array 
- * @param {function} function: a function that tests truthy of a value
+ * @param {function} callback: a function that tests truthy of a value
  * 
  * @return {array}: a new array with the true elements in 
  */
@@ -199,7 +198,7 @@ module.exports.filter = filter;
  *              
  * 
  * @param {Array} array: any array 
- * @param {function} function: a function that tests falsy of a value
+ * @param {function} callback: a function that tests falsy of a value
  * 
  * @return {array}: a new array with the falsy elements in 
  */
@@ -228,7 +227,7 @@ module.exports.reject = reject;
  * 
  * 
  * @param {Array} array: array that has truthy and falsy values
- * @param {function} function: function that returns true if values given are true
+ * @param {function} test: function that returns true if values given are true
  * 
  * @return {Array}: An array that has an array of true values and another array of false values
  * 
@@ -246,8 +245,8 @@ module.exports.partition = partition;
  * map: It will take an collection of an array or object. The function will call upon it's elements. This function will 
  * push the new modified element into a new array.
  * 
- * @param {Array or Object} array or object : an array or object which its elements will be used
- * @param {function} function: function that will do something a give back another value
+ * @param {Array or Object} collection: an array or object which its elements will be used
+ * @param {function} callback: function that will do something a give back another value
  * 
  * @return {Array}: The callback function element will be pushed into an new array
  * 
@@ -271,8 +270,8 @@ module.exports.map = map;
 *pluck:  Iterate through the object that is in an array and see if the given property key is in the object.
 * If the property key is found, the values of the key will be pushed into a new array.
 * Then, it will return an array with the values.
-* @param: {Array} array: an array of objects
-* @param: {string} string: a string of the property key
+* @param: {Array} arrayObj: an array of objects
+* @param: {string} property: a string of the property key
 * @return: {array}: will return an array with the values
 */
 
@@ -289,7 +288,7 @@ return arrayObj.map(element => element[property]);
 * If there is no callback function given, it will return true for truthy results.
 *If there is no callback function given, it will return false for falsy results.
 * @param: {collection} collection: Can be any collection
-* @param: {function} function: this function will be called upon by the collection's element
+* @param: {function} fun: this function will be called upon by the collection's element
 * @return: {Boolean}: If ALL the values are true, it will return a true boolean value. Else, it will return false.
 */
 
@@ -338,11 +337,11 @@ module.exports.some = some;
  /**
     * reduce: It will add values in a reduced array 
     * 
-    * @param {Array} array: array with contents within to reduce
-    * @param {funciton} function: function to pass element, acc, and index of the array
-    * @param {datatype} seed: determines first position, if it is not given it will be the first index of the array
+    * @param {Array} collectiony: array with contents within to reduce
+    * @param {funciton} iterator: function to pass element, acc, and index of the array
+    * @param {*} accumulator: determines first position, if it is not given it will be the first index of the array
     * 
-    * @return {value} : will be value of previous value (acc) + current value
+    * @return {*} : will be value of previous value (acc) + current value
     * 
     * 
     * 
@@ -371,8 +370,8 @@ module.exports.reduce = reduce;
 /**
 *extend: Takes in many object as arguments and returns one object with copy properties.
 *
-* @param: {objects} object: mulitple objects with key/value pairs 
-* @return: {array}: copy the properties from the objects and update it to the first object
+* @param: {objects} ...objArr: mulitple objects with key/value pairs 
+* @return: {object}: copy the properties from the objects and update it to the first object
 */
 
 function extend(...objArr){
