@@ -67,8 +67,8 @@ module.exports.typeOf = typeOf;
  * @param {Array} array: The array being tested
  * @param {number} number: The number used to test if its a number in an array
  * 
- * @return {[]}: if the number given is a negative
- * @return {first element in array}: if number is not given or not a number
+ * @return {array}: if the number given is a negative it will return an empty array 
+ * @return {array}: if number is not given or not a number it will return the first element in the array
  * @return {array}: if number given is greater than the array's length it will return whole array
  * @return {array}: will return an array's elements up to the given number it will return the modified array
  */
@@ -89,8 +89,8 @@ module.exports.first = first();
  * @param {Array} array: any array that will be tested 
  * @param {number} x: the number that will be passed to test if it is a number in the array
  * 
- * @return {[]}: if the number is a negative
- * @return {last element in array}: if the number is not given or not a number 
+ * @return {array}: if the number is a negative it will return []
+ * @return {array}: if the number is not given or not a number it will return the last element in the array
  * @return {array}: if number given is greater than the array's length it will return the whole array 
  * @return {array}: will return an array's elements up to the given number to the end it will return a modified array
  */
